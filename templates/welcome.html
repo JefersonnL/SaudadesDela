@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='welcome-background.jpg') }}'); /* Caminho para a imagem de fundo */
+            background-size: cover; /* Faz a imagem cobrir toda a área do fundo */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Fixa a imagem de fundo ao rolar */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente para contraste */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: #000; /* Cor da fonte preta */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .option-card {
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 200px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .option-card a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .option-card a:hover {
+            color: #0056b3;
+        }
+        p {
+            margin: 20px 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Seja bem vindo, aqui estão seus treinos.</h1>
+        </header>
+        <p><strong>Você está logado como {{ current_user.username }}.</strong></p>
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+
+        <section class="options">
+            <div class="option-card">
+                <h2>Pernas</h2>
+                <p><a href="{{ url_for('treino_perna') }}">Ver Detalhes</a></p>
+            </div>
+            <div class="option-card">
+                <h2>Peito & Tríceps</h2>
+                <p><a href="{{ url_for('treino_peito_triceps') }}">Ver Detalhes</a></p>
+            </div>
+            <div class="option-card">
+                <h2>Costas & Bíceps</h2>
+                <p><a href="{{ url_for('treino_costas_biceps') }}">Ver Detalhes</a></p>
+            </div>
+            <div class="option-card">
+                <h2>Ombros & Abdômen</h2>
+                <p><a href="{{ url_for('treino_ombros_abdomen') }}">Ver Detalhes</a></p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

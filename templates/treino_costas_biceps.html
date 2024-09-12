@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino de Costas e Bíceps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='back-background.jpg') }}'); /* Nome da imagem de fundo */
+            background-size: cover; /* Ajusta a imagem para cobrir a tela */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            background-attachment: fixed; /* Fixa a imagem para não rolar com o conteúdo */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5); /* Fundo semi-transparente para contraste */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+        .exercise-item {
+            background: #fff;
+            color: #333;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold; /* Fonte em negrito */
+            font-size: 1.1em; /* Aumenta o tamanho da fonte */
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Treino de Costas e Bíceps</h1>
+        </header>
+        <p>Veja abaixo os exercícios recomendados para um treino completo de costas e bíceps.</p>
+        <ul class="exercise-list">
+            <!-- Exercícios para Costas -->
+            <li class="exercise-item">Puxada Frontal</li>
+            <li class="exercise-item">Remada Curvada com Barra</li>
+            <li class="exercise-item">Remada Unilateral com Halteres</li>
+            <li class="exercise-item">Puxada na Polia Alta com Pegada Aberta</li>
+            <li class="exercise-item">Puxada na Polia Alta com Pegada Fechada</li>
+            <li class="exercise-item">Barra Fixa</li>
+            <li class="exercise-item">Levantamento Terra</li>
+            <li class="exercise-item">Remada Sentada na Máquina</li>
+            <li class="exercise-item">Pulldown com Pegada Aberta</li>
+            <li class="exercise-item">Pulldown com Pegada Fechada</li>
+            <li class="exercise-item">Remada Baixa com Barra</li>
+            <li class="exercise-item">Remada Baixa com Halteres</li>
+            <li class="exercise-item">Pullover com Halteres</li>
+            <li class="exercise-item">Pullover com Barra</li>
+            <li class="exercise-item">Puxada Inversa</li>
+            <li class="exercise-item">Encolhimento de Ombros com Barra</li>
+            <li class="exercise-item">Encolhimento de Ombros com Halteres</li>
+            <li class="exercise-item">Remada em Pé com Barra</li>
+            <li class="exercise-item">Remada em Pé com Halteres</li>
+            <li class="exercise-item">Puxada na Polia Baixa</li>
+            <li class="exercise-item">Puxada com Pegada Neutra</li>
+            <li class="exercise-item">Puxada com Pegada Supinada</li>
+            <li class="exercise-item">Remada com Corda</li>
+            <li class="exercise-item">Remada com Pegada Pronada</li>
+            <li class="exercise-item">Remada com Pegada Neutra</li>
+            <li class="exercise-item">Remada com Pegada Supinada</li>
+
+            <!-- Exercícios para Bíceps -->
+            <li class="exercise-item">Rosca Direta com Barra</li>
+            <li class="exercise-item">Rosca Alternada com Halteres</li>
+            <li class="exercise-item">Rosca Martelo</li>
+            <li class="exercise-item">Rosca Concentrada</li>
+            <li class="exercise-item">Rosca Scott</li>
+            <li class="exercise-item">Rosca Inversa</li>
+            <li class="exercise-item">Rosca na Polia Baixa</li>
+            <li class="exercise-item">Rosca na Polia Alta</li>
+            <li class="exercise-item">Rosca com Barra W</li>
+            <li class="exercise-item">Rosca com Halteres Alternada</li>
+            <li class="exercise-item">Rosca com Pegada Supinada</li>
+            <li class="exercise-item">Rosca com Pegada Neutra</li>
+            <li class="exercise-item">Rosca com Pegada Pronada</li>
+            <li class="exercise-item">Rosca com Corda na Polia</li>
+            <li class="exercise-item">Rosca com Halteres em Pé</li>
+            <li class="exercise-item">Rosca com Barra em Pé</li>
+            <li class="exercise-item">Rosca Spider</li>
+            <li class="exercise-item">Rosca Combinada</li>
+            <li class="exercise-item">Rosca Curvada</li>
+            <li class="exercise-item">Rosca Alternada com Supinação</li>
+            <li class="exercise-item">Rosca na Máquina</li>
+            <li class="exercise-item">Rosca em Scott com Halteres</li>
+            <li class="exercise-item">Rosca na Máquina com Pegada Neutra</li>
+            <li class="exercise-item">Rosca na Máquina com Pegada Pronada</li>
+            <li class="exercise-item">Rosca com Pegada Fechada</li>
+            <li class="exercise-item">Rosca com Pegada Aberta</li>
+            <li class="exercise-item">Rosca com Halteres Unilateral</li>
+            <li class="exercise-item">Rosca Sentada com Barra</li>
+            <li class="exercise-item">Rosca Sentada com Halteres</li>
+        </ul>
+        <p><a href="{{ url_for('welcome') }}">Voltar para a Página Inicial</a></p>
+    </div>
+</body>
+</html>

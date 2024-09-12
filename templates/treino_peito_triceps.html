@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino de Peito e Tríceps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='chest-background.jpg') }}'); /* Nome da imagem de fundo */
+            background-size: cover; /* Ajusta a imagem para cobrir a tela */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            background-attachment: fixed; /* Fixa a imagem para não rolar com o conteúdo */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5); /* Fundo semi-transparente para contraste */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+        .exercise-item {
+            background: #fff;
+            color: #333;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold; /* Fonte em negrito */
+            font-size: 1.1em; /* Aumenta o tamanho da fonte */
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Treino de Peito e Tríceps</h1>
+        </header>
+        <p>Veja abaixo os exercícios recomendados para um treino completo de peito e tríceps.</p>
+        <ul class="exercise-list">
+            <!-- Exercícios para Peito -->
+            <li class="exercise-item">Supino Reto com Barra</li>
+            <li class="exercise-item">Supino Inclinado com Barra</li>
+            <li class="exercise-item">Supino Declinado com Barra</li>
+            <li class="exercise-item">Supino Reto com Halteres</li>
+            <li class="exercise-item">Supino Inclinado com Halteres</li>
+            <li class="exercise-item">Supino Declinado com Halteres</li>
+            <li class="exercise-item">Crossover</li>
+            <li class="exercise-item">Peck Deck</li>
+            <li class="exercise-item">Flexão de Braços</li>
+            <li class="exercise-item">Pullover com Halteres</li>
+            <li class="exercise-item">Peck Deck na Máquina</li>
+            <li class="exercise-item">Crucifixo Reto com Halteres</li>
+            <li class="exercise-item">Crucifixo Inclinado com Halteres</li>
+            <li class="exercise-item">Crucifixo Declinado com Halteres</li>
+            <li class="exercise-item">Dips (Mergulho) com Peso</li>
+            <li class="exercise-item">Mergulho nas Paralelas</li>
+            <li class="exercise-item">Flexão de Braços com Pegada Fechada</li>
+            <li class="exercise-item">Flexão de Braços com Pegada Aberta</li>
+            <li class="exercise-item">Flexão de Braços em Declínio</li>
+            <li class="exercise-item">Crucifixo na Máquina</li>
+            <li class="exercise-item">Supino Reto na Máquina</li>
+            <li class="exercise-item">Supino Inclinado na Máquina</li>
+            <li class="exercise-item">Supino Declinado na Máquina</li>
+            <li class="exercise-item">Supino com Pegada Neutra</li>
+            <li class="exercise-item">Flexão de Braços na Barra</li>
+            <li class="exercise-item">Supino Reto com Pegada Fechada</li>
+            <li class="exercise-item">Supino Inclinado com Pegada Fechada</li>
+            <li class="exercise-item">Supino Declinado com Pegada Fechada</li>
+
+            <!-- Exercícios para Tríceps -->
+            <li class="exercise-item">Tríceps Testa com Barra</li>
+            <li class="exercise-item">Tríceps Testa com Halteres</li>
+            <li class="exercise-item">Tríceps na Polia Alta com Corda</li>
+            <li class="exercise-item">Tríceps na Polia Alta com Barra</li>
+            <li class="exercise-item">Mergulho nas Paralelas</li>
+            <li class="exercise-item">Mergulho com Peso</li>
+            <li class="exercise-item">Extensão de Tríceps com Halteres</li>
+            <li class="exercise-item">Extensão de Tríceps na Polia Baixa</li>
+            <li class="exercise-item">Kickback com Halteres</li>
+            <li class="exercise-item">Tríceps Unilateral com Halteres</li>
+            <li class="exercise-item">Tríceps na Máquina</li>
+            <li class="exercise-item">Tríceps na Polia com Corda</li>
+            <li class="exercise-item">Extensão de Tríceps na Polia Alta com Corda</li>
+            <li class="exercise-item">Tríceps Francês</li>
+            <li class="exercise-item">Extensão de Tríceps em Pé</li>
+            <li class="exercise-item">Tríceps Kickback</li>
+            <li class="exercise-item">Tríceps na Polia com Barra</li>
+            <li class="exercise-item">Extensão de Tríceps deitado</li>
+            <li class="exercise-item">Tríceps Unilateral na Polia Baixa</li>
+            <li class="exercise-item">Extensão de Tríceps na Polia Alta com Pegada Neutra</li>
+            <li class="exercise-item">Tríceps na Máquina com Pegada Neutra</li>
+            <li class="exercise-item">Tríceps Unilateral com Corda</li>
+            <li class="exercise-item">Tríceps Francês com Halteres</li>
+            <li class="exercise-item">Tríceps na Polia Baixa com Barra</li>
+            <li class="exercise-item">Extensão de Tríceps com Pegada Neutra</li>
+            <li class="exercise-item">Tríceps Francês com Barra</li>
+            <li class="exercise-item">Mergulho em Banco com Peso</li>
+        </ul>
+        <p><a href="{{ url_for('welcome') }}">Voltar para a Página Inicial</a></p>
+    </div>
+</body>
+</html>

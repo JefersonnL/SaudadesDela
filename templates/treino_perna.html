@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino de Pernas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='exercise-background.jpg') }}'); /* Caminho para a imagem de fundo */
+            background-size: cover; /* Faz a imagem cobrir toda a área do fundo */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Fixa a imagem de fundo ao rolar */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente para contraste */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: #000; /* Cor da fonte preta */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 3em; /* Aumenta o tamanho da fonte do título */
+            font-weight: 700;
+        }
+        p {
+            font-size: 1.2em; /* Aumenta o tamanho da fonte dos parágrafos */
+            font-weight: bold; /* Texto em negrito */
+        }
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+        .exercise-item {
+            background: rgba(255, 255, 255, 0.5); /* Fundo semi-transparente para os itens da lista */
+            color: #333;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold; /* Texto em negrito */
+            font-size: 1.1em; /* Aumenta o tamanho da fonte dos itens da lista */
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Treino de Pernas</h1>
+        </header>
+        <p><strong>Veja abaixo os exercícios recomendados para um treino completo de pernas.</strong></p>
+        <ul class="exercise-list">
+            <li class="exercise-item">Agachamento Livre</li>
+            <li class="exercise-item">Agachamento Hack</li>
+            <li class="exercise-item">Leg Press</li>
+            <li class="exercise-item">Cadeira Extensora</li>
+            <li class="exercise-item">Cadeira Flexora</li>
+            <li class="exercise-item">Stiff com Halteres</li>
+            <li class="exercise-item">Stiff com Barra</li>
+            <li class="exercise-item">Afundo com Halteres</li>
+            <li class="exercise-item">Afundo com Barra</li>
+            <li class="exercise-item">Elevação de Calcanhares em Pé</li>
+            <li class="exercise-item">Elevação de Calcanhares Sentado</li>
+            <li class="exercise-item">Panturrilha na Leg Press</li>
+            <li class="exercise-item">Agachamento Frontal</li>
+            <li class="exercise-item">Agachamento Sumo</li>
+            <li class="exercise-item">Agachamento Búlgaro</li>
+            <li class="exercise-item">Flexão de Joelhos em Pé</li>
+            <li class="exercise-item">Extensão de Quadril</li>
+            <li class="exercise-item">Avanço com Halteres</li>
+            <li class="exercise-item">Avanço com Barra</li>
+            <li class="exercise-item">Cadeira Abdutora</li>
+            <li class="exercise-item">Cadeira Adutora</li>
+            <li class="exercise-item">Plié com Halteres</li>
+            <li class="exercise-item">Plié com Barra</li>
+            <li class="exercise-item">Ponte para Glúteos</li>
+            <li class="exercise-item">Ponte com um Pé</li>
+            <li class="exercise-item">Elevação de Quadril na Bola Suíça</li>
+            <li class="exercise-item">Agachamento com Kettlebell</li>
+            <li class="exercise-item">Agachamento com Bola</li>
+            <li class="exercise-item">Stiff com Kettlebell</li>
+            <li class="exercise-item">Avanço Lateral</li>
+            <li class="exercise-item">Cadeira Abdutora com Corda</li>
+            <li class="exercise-item">Cadeira Flexora com Corda</li>
+            <li class="exercise-item">Cadeira Extensora com Corda</li>
+        </ul>
+        <p><a href="{{ url_for('welcome') }}">Voltar para a Página Inicial</a></p>
+    </div>
+</body>
+</html>
