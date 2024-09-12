@@ -6,8 +6,8 @@ from datetime import timedelta
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SECRET_KEY'] = 'your_secret_key'  # Substitua por uma chave secreta segura
-app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)  # Duração do cookie de lembrança
+app.config['SECRET_KEY'] = 'your_secret_key'  
+app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)  
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -75,12 +75,12 @@ def logout():
     flash('Você foi desconectado.', 'success')
     return redirect(url_for('login'))
 
-# Rota para o treino de pernas
+
 @app.route('/treino_perna')
 def treino_perna():
     return render_template('treino_perna.html')
 
-# Rota para o treino de peito e tríceps
+
 @app.route('/treino_peito_triceps')
 def treino_peito_triceps():
     return render_template('treino_peito_triceps.html')
