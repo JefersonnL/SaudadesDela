@@ -13,7 +13,7 @@ Este é um aplicativo web para gerenciamento de treinos e registro de atividades
 
 ## Tecnologias Usadas
 
-- **Backend**: Flask
+- **Backend**: Flask, Python
 - **Frontend**: HTML, CSS
 - **Banco de Dados**: SQLite
 - **Gerenciamento de Pacotes**: pip
