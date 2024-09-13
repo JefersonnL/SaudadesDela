@@ -53,11 +53,11 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        remember = 'remember' in request.form  # Verifica se a caixa de seleção está marcada
+        remember = 'remember' in request.form  
         user = User.query.filter_by(username=username).first()
         
         if user and check_password_hash(user.password, password):
-            login_user(user, remember=remember)  # Adiciona o parâmetro remember
+            login_user(user, remember=remember)  
             return redirect(url_for('welcome'))
         else:
             flash('Credenciais inválidas, tente novamente.', 'error')
