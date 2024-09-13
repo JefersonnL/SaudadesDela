@@ -8,10 +8,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('{{ url_for('static', filename='register-background.jpg') }}'); /* Caminho para a imagem de fundo */
-            background-size: cover; /* Faz com que a imagem cubra toda a área de fundo */
-            background-position: center; /* Centraliza a imagem */
-            background-repeat: no-repeat; /* Evita repetição da imagem de fundo */
+            background-image: url('{{ url_for('static', filename='register-background.jpg') }}'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,24 +22,24 @@
         .container {
             max-width: 400px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9); /* Fundo branco com opacidade para melhorar a legibilidade */
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
         h1 {
-            color: #000; /* Texto preto */
+            color: #000; 
             margin-bottom: 20px;
-            font-weight: bold; /* Texto em negrito */
+            font-weight: bold; 
         }
         form {
             display: flex;
             flex-direction: column;
         }
         label {
-            font-weight: bold; /* Texto em negrito */
-            color: #000; /* Texto preto */
+            font-weight: bold; 
+            color: #000; 
             margin-bottom: 5px;
             text-align: left;
         }
@@ -49,7 +49,7 @@
             margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            color: #000; /* Texto preto dentro dos campos de entrada */
+            color: #000; 
         }
         input[type="submit"] {
             padding: 10px;
@@ -59,7 +59,7 @@
             color: white;
             font-size: 16px;
             cursor: pointer;
-            font-weight: bold; /* Texto em negrito */
+            font-weight: bold; 
         }
         input[type="submit"]:hover {
             background-color: #0056b3;
@@ -69,7 +69,7 @@
             padding: 10px;
             border-radius: 4px;
             color: white;
-            font-weight: bold; /* Texto em negrito */
+            font-weight: bold; 
         }
         .flash.success {
             background-color: #28a745;
@@ -80,7 +80,7 @@
         a {
             color: #007bff;
             text-decoration: none;
-            font-weight: bold; /* Texto em negrito */
+            font-weight: bold; 
         }
         a:hover {
             text-decoration: underline;
