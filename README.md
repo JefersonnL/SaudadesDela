@@ -23,21 +23,20 @@ Este é um aplicativo web para gerenciamento de treinos e registro de atividades
 Para configurar e executar este projeto localmente, siga os passos abaixo:
 
 1. **Clone o repositório**:
-   ```bash
    git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
    cd SEU_REPOSITORIO
 2. **Configurar o ambiente virtual**
 Criar um ambiente virtual Python para isolar as dependências do projeto. O usuário pode fazer isso com os seguintes comandos:
 ```bash
-python -m venv venv
-venv\Scripts\activate
+   python -m venv venv
+   venv\Scripts\activate
 3. **Instalar as dependências**
 As dependências estão listadas no arquivo requirements.txt. O próximo passo é instalar essas dependências usando pip:
-pip install -r requirements.txt
+   pip install -r requirements.txt
 4. **Configurar o banco de dados**
 O projeto usa SQLite, que é leve e não exige instalação de um servidor de banco de dados. Para criar o banco de dados, pode ser necessário rodar os scripts de configuração:
-python create_db.py
+   python create_db.py
 5. **Executar o programa**
 Após a instalação e configuração, o usuário pode iniciar o programa usando o comando:
-python app.py
+   python app.py
 **O servidor Flask vai rodar localmente, e o usuário poderá acessar o aplicativo através do navegador no endereço http://127.0.0.1:5000.**
