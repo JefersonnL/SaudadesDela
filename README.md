@@ -28,6 +28,7 @@ Para configurar e executar este projeto localmente, siga os passos abaixo:
    cd SEU_REPOSITORIO
 2. **Configurar o ambiente virtual**
 Criar um ambiente virtual Python para isolar as dependências do projeto. O usuário pode fazer isso com os seguintes comandos:
+```bash
 python -m venv venv
 venv\Scripts\activate
 3. **Instalar as dependências**
