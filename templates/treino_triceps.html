@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino de Tríceps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='triceps-background.jpg') }}'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5); 
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+        .exercise-item {
+            background: #fff;
+            color: #333;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold; 
+            font-size: 1.1em; 
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Treino de Tríceps</h1>
+        </header>
+        <p>Veja abaixo os exercícios recomendados para um treino completo de tríceps.</p>
+        <ul class="exercise-list">
+            <!-- Exercícios para Tríceps -->
+            <li class="exercise-item">Mergulho em Banco</li>
+            <li class="exercise-item">Tríceps na Polia Alta</li>
+            <li class="exercise-item">Tríceps Testa com Halteres</li>
+            <li class="exercise-item">Extensão de Tríceps Acima da Cabeça</li>
+            <li class="exercise-item">Tríceps Kickback com Halteres</li>
+            <li class="exercise-item">Tríceps Francês</li>
+            <li class="exercise-item">Pressão de Tríceps no Banco</li>
+            <li class="exercise-item">Tríceps na Barra</li>
+            <li class="exercise-item">Extensão de Tríceps com Cabo</li>
+            <li class="exercise-item">Push-Ups com Mãos Juntas</li>
+            <li class="exercise-item">Diamond Push-Ups</li>
+            <li class="exercise-item">Dumbbell Skull Crushers</li>
+            <li class="exercise-item">Overhead Dumbbell Tricep Extension</li>
+        </ul>
+        <p><a href="{{ url_for('welcome') }}">Voltar para a Página Inicial</a></p>
+    </div>
+</body>
+</html>
+

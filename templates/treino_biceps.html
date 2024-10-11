@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino de Bíceps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='biceps-background.jpg') }}'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5); 
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+        .exercise-item {
+            background: #fff;
+            color: #333;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold; 
+            font-size: 1.1em; 
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Treino de Bíceps</h1>
+        </header>
+        <p>Veja abaixo os exercícios recomendados para um treino completo de bíceps.</p>
+        <ul class="exercise-list">
+            <!-- Exercícios para Bíceps -->
+            <li class="exercise-item">Rosca Direta com Barra</li>
+            <li class="exercise-item">Rosca Alternada com Halteres</li>
+            <li class="exercise-item">Rosca Scott</li>
+            <li class="exercise-item">Rosca Martelo</li>
+            <li class="exercise-item">Rosca Concentrada</li>
+            <li class="exercise-item">Barbell Curl</li>
+            <li class="exercise-item">Cable Bicep Curl</li>
+            <li class="exercise-item">Zottman Curl</li>
+            <li class="exercise-item">Incline Dumbbell Curl</li>
+            <li class="exercise-item">Reverse Curl</li>
+            <li class="exercise-item">Preacher Curl</li>
+            <li class="exercise-item">Cross Body Hammer Curl</li>
+            <li class="exercise-item">Single Arm Dumbbell Curl</li>
+            <li class="exercise-item">Dumbbell Bicep Curl com Rotação</li>
+            <li class="exercise-item">Barbell Drag Curl</li>
+        </ul>
+        <p><a href="{{ url_for('welcome') }}">Voltar para a Página Inicial</a></p>
+    </div>
+</body>
+</html>
+
