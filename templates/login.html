@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('{{ url_for('static', filename='login-background.jpg') }}'); /* Caminho para a imagem de fundo */
+            background-size: cover; /* Faz a imagem cobrir toda a área do fundo */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Fixa a imagem de fundo ao rolar */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente para contraste */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+            color: #000; /* Cor do texto das labels */
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .flash {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+        }
+        .flash.success {
+            background-color: #28a745;
+        }
+        .flash.error {
+            background-color: #dc3545;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container p {
+            color: #000; /* Cor do texto do parágrafo */
+            font-weight: bold; /* Fonte em negrito */
+        }
+        .comments-section {
+            margin-top: 20px;
+            text-align: left;
+            color: #000; /* Cor do texto dos comentários */
+        }
+        .comment {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem vindo!</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <label>
+                <input type="checkbox" name="remember"> Manter-me Conectado
+            </label>
+            <button type="submit">Login</button>
+        </form>
+        <p>Não tem uma conta? <a href="{{ url_for('register') }}">Criar</a></p>
+
+        <!-- Seção de Avaliações -->
+<div class="reviews-section">
+    <h2></h2>
+    <form method="POST" action="{{ url_for('review') }}">
+        <input type="hidden" name="username" value="{{ current_user.username }}">
+        <label for="rating">Avaliação:</label>
+        <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5" required>
+            <label for="star5" title="5 estrelas">★</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4" title="4 estrelas">★</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3" title="3 estrelas">★</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2" title="2 estrelas">★</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1" title="1 estrela">★</label>
+        </div>
+        <textarea name="comment" rows="3" placeholder="Adicione um comentário "></textarea>
+        <button type="submit">Enviar Avaliação</button>
+    </form>
+    <ul class="reviews-list">
+        {% for review in reviews %}
+            <li>
+                <strong>{{ review.username }}</strong>: 
+                <span class="review-rating">
+                    {% for i in range(5) %}
+                        {% if i < review.rating %}
+                            ★
+                        {% else %}
+                            ☆
+                        {% endif %}
+                    {% endfor %}
+                </span> - {{ review.comment }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<style>
+    .reviews-section {
+        margin-top: 20px;
+        text-align: left;
+        color: #000; /* Cor do texto dos comentários */
+    }
+
+    .rating {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .rating input {
+        display: none; /* Esconde o input */
+    }
+
+    .rating label {
+        font-size: 30px;
+        color: #ddd; /* Cor padrão das estrelas */
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+    .rating input:checked ~ label {
+        color: #ffc700; /* Cor das estrelas quando selecionadas */
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label {
+        color: #ffc700; /* Cor das estrelas ao passar o mouse */
+    }
+
+    .reviews-list {
+        list-style-type: none; /* Remove os marcadores da lista */
+        padding: 0;
+    }
+
+    .reviews-list li {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+  
+
