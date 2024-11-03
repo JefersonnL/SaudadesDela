@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='login-background.jpg') }}'); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8); /* Fundo mais escuro para melhor contraste */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            text-align: left; /* Alinhando texto à esquerda */
+            position: absolute; /* Para permitir posicionamento em relação à tela */
+            top: 20px; /* Distância do topo */
+            left: 20px; /* Distância da esquerda */
+        }
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+            color: #fff;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] { /* Estilo para todos os campos de entrada */
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            width: 100%; /* Garante que todos os campos ocupem 100% da largura */
+        }
+        input:focus {
+            border-color: #007bff; /* Mudança de cor ao focar */
+            outline: none;
+        }
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .flash {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+        }
+        .flash.success {
+            background-color: #28a745;
+        }
+        .flash.error {
+            background-color: #dc3545;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container p {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Estilo do Pop-up */
+        .popup {
+            display: none; /* Inicialmente oculto */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            z-index: 1000;
+            color: #fff;
+        }
+        .popup h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .popup form {
+            display: flex;
+            flex-direction: column;
+        }
+        .popup .close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.2em;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .overlay {
+            display: none; /* Inicialmente oculto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo!</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <label>
+                <input type="checkbox" name="remember"> Manter-me Conectado
+            </label>
+            <button type="submit">Login</button>
+        </form>
+        <p>Não tem uma conta? <a href="#" id="registerBtn">Criar</a></p>
+    </div>
+
+    <!-- Overlay para o pop-up -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Pop-up para registro -->
+    <div class="popup" id="popup">
+        <button class="close" id="closePopup">&times;</button>
+        <h2>Criar Conta</h2>
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="newUsername">Usuário:</label>
+            <input type="text" id="newUsername" name="username" required>
+            <label for="newEmail">E-mail:</label>
+            <input type="email" id="newEmail" name="email" required>
+            <label for="newPassword">Senha:</label>
+            <input type="password" id="newPassword" name="password" required>
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+
+    <script>
+        // Script para abrir e fechar o pop-up
+        const registerBtn = document.getElementById('registerBtn');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const closePopup = document.getElementById('closePopup');
+
+        registerBtn.onclick = function() {
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        closePopup.onclick = function() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        overlay.onclick = function() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
+
