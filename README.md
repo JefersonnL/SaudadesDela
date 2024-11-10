@@ -1,4 +1,4 @@
-[Imagem de saudade dela](static/VV.jpg)
+[Imagem de saudade dela](static/VV.png)
 
 # Meu Projeto de Treino
 
