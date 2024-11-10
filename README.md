@@ -1,4 +1,5 @@
-(https://github.com/JefersonnL/SaudadesDela/blob/main/static/VV.png?raw=true)
+![Imagem de saudade dela](static/profile_pics/sdds.png)
+
 
 # Meu Projeto de Treino
 
