@@ -6,8 +6,8 @@ from datetime import timedelta
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SECRET_KEY'] = 'your_secret_key'  # Substitua por uma chave secreta segura
-app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)  # Duração do cookie de lembrança
+app.config['SECRET_KEY'] = 'your_secret_key'  
+app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)  
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -29,8 +29,8 @@ class Comment(db.Model):
 class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False)
-    rating = db.Column(db.Integer, nullable=False)  # Avaliação de 1 a 5
-    comment = db.Column(db.Text, nullable=True)  # Comentário opcional
+    rating = db.Column(db.Integer, nullable=False)  
+    comment = db.Column(db.Text, nullable=True)  
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -64,17 +64,17 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        remember = 'remember' in request.form  # Verifica se a caixa de seleção está marcada
+        remember = 'remember' in request.form  
         user = User.query.filter_by(username=username).first()
         
         if user and check_password_hash(user.password, password):
-            login_user(user, remember=remember)  # Adiciona o parâmetro remember
-            return redirect(url_for('profile'))  # Redireciona para a página de perfil
+            login_user(user, remember=remember)  
+            return redirect(url_for('profile'))  
         else:
             flash('Credenciais inválidas, tente novamente.', 'error')
     
-    comments = Comment.query.all()  # Recupera todos os comentários
-    reviews = Review.query.all()  # Recupera todas as avaliações
+    comments = Comment.query.all()  
+    reviews = Review.query.all()  
     return render_template('login.html', comments=comments, reviews=reviews)
 
 @app.route('/profile')
@@ -91,7 +91,7 @@ def edit_profile():
 
         # Atualiza o usuário no banco de dados
         current_user.username = username
-        if password:  # Se a senha não estiver vazia, atualiza
+        if password: 
             current_user.password = generate_password_hash(password, method='pbkdf2:sha256')
         db.session.commit()
 
@@ -165,7 +165,7 @@ def review():
     if request.method == 'POST':
         username = request.form['username']
         rating = request.form['rating']
-        comment = request.form.get('comment', '')  # Comentário é opcional
+        comment = request.form.get('comment', '')  
         
         new_review = Review(username=username, rating=rating, comment=comment)
         db.session.add(new_review)
