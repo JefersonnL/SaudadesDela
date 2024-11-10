@@ -1,4 +1,4 @@
-(static/VV.png)
+(https://github.com/JefersonnL/SaudadesDela/blob/main/static/VV.png?raw=true)
 
 # Meu Projeto de Treino
 
