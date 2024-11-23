@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('{{ url_for("static", filename="backgrounddd.jpg") }}') no-repeat center center fixed; 
+            background-size: cover;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+        .form-header {
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.5em;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            color: #007bff; 
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+        }
+        button {
+            font-size: 1.1em;
+            color: white;
+            background: #007bff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        p {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #ccc;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Perfil</h1>
+        <div class="form-header">Atualize suas informações</div>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="username" placeholder="Novo Nome de Usuário" required>
+            <input type="email" name="email" placeholder="Novo Endereço de E-mail" required>
+            <input type="password" name="password" placeholder="Nova Senha (deixe em branco para não alterar)">
+            <input type="text" name="phone" placeholder="Telefone (opcional)">
+            <input type="text" name="address" placeholder="Endereço (opcional)">
+            <input type="file" name="profile_picture" accept="image/*" placeholder="Selecionar Foto de Perfil">
+            <button type="submit">Atualizar Perfil</button>
+        </form>
+        <p><a href="{{ url_for('profile') }}">Voltar para o Perfil</a></p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('{{ url_for("static", filename="backgroundd.jpg") }}') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .profile-picture {
+            width: 120px; 
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            cursor: pointer;
+            border: 4px solid #fff;
+            transition: transform 0.3s;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            color: #fff;
+            background: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        a:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .link-list li {
+            margin: 10px 0;
+        }
+
+        /* Caixa de redirecionamento no canto superior direito */
+        .redirect-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-weight: bold;
+            border-radius: 3px;
+            font-size: 10px;
+            text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
+            transition: background-color 0.3s ease;
+            z-index: 100;
+        }
+
+        .redirect-box:hover {
+            background-color: #007bff;
+        }
+
+        @media (max-width: 600px) {
+            .redirect-box {
+                font-size: 9px;
+                padding: 4px 6px;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .profile-header {
+                flex-direction: column;
+            }
+
+            .profile-picture {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Estilo do modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.6);
+            padding-top: 60px;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Modal conteúdo */
+        .modal-content {
+            background-color: #222;
+            margin: 5% auto;
+            padding: 40px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            transform: translateY(-30px);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Animação de slide-in */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Botão de fechar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Formulário de edição */
+        .edit-form input[type="text"],
+        .edit-form input[type="email"],
+        .edit-form input[type="password"],
+        .edit-form input[type="tel"],
+        .edit-form input[type="file"],
+        .edit-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            background-color: #444;
+            border: 1px solid #555;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .edit-form input[type="text"]:focus,
+        .edit-form input[type="email"]:focus,
+        .edit-form input[type="password"]:focus,
+        .edit-form input[type="tel"]:focus,
+        .edit-form input[type="file"]:focus,
+        .edit-form select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .edit-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.1em;
+            margin-top: 15px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .edit-form input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn {
+            background-color: #28a745;
+            padding: 10px 20px;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .upload-btn:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Caixa de redirecionamento no canto superior direito -->
+    <a href="https://jefersonnl.github.io/VoltaPraMim/" class="redirect-box" target="_blank" aria-label="Link para sua homenagem">あなたの笑顔はまだここに</a>
+
+    <div class="container">
+        <div class="profile-header">
+            <img src="{{ url_for('static', filename='profile_pics/minha_foto.jpg') }}" alt="Foto de Perfil" class="profile-picture" id="profilePic" onclick="document.getElementById('profilePicInput').click()">
+            <h1>Bem-vindo, {{ current_user.username }}!</h1>
+        </div>
+        <p>Esta é a sua página de perfil.</p>
+        <ul class="link-list">
+            <li><a href="javascript:void(0)" id="editProfileBtn">Editar Perfil</a></li>
+            <li><a href="{{ url_for('welcome') }}">Acessar Página de Treinos</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Modal de edição -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Editar Perfil</h2>
+            <form class="edit-form" id="editProfileForm">
+                <input type="text" name="name" placeholder="Nome completo" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Nova senha" required>
+                <input type="tel" name="phone" placeholder="Telefone" required>
+                <label for="profilePicInput" class="upload-btn">Escolher Foto</label>
+                <input type="file" id="profilePicInput" accept="image/*">
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Script para abrir e fechar o modal de edição
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const editProfileModal = document.getElementById('editProfileModal');
+        const closeModal = () => editProfileModal.style.display = "none";
+        
+        editProfileBtn.addEventListener('click', () => editProfileModal.style.display = "block");
+
+        // Fechar modal ao clicar fora dele
+        window.onclick = (event) => {
+            if (event.target === editProfileModal) {
+                closeModal();
+            }
+        };
+
+        // Função de validação simples do formulário
+        const editProfileForm = document.getElementById('editProfileForm');
+        editProfileForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Perfil atualizado com sucesso!');
+            closeModal();
+        });
+
+        // Para focar no campo de upload da foto
+        document.getElementById('profilePic').addEventListener('click', function() {
+            document.getElementById('profilePicInput').click();
+        });
+    </script>
+</body>
+</html>
+

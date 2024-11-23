@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino de Pernas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='exercise-background.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            font-weight: 300;
+            color: #ddd;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .exercise-item {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: 400;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .exercise-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .exercise-item a {
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .exercise-item a:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 20px;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #fff;
+            color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Treino de Pernas</h1>
+        </header>
+        <p>Confira os exercícios recomendados para um treino eficiente de pernas. Prepare-se para suar!</p>
+        <ul class="exercise-list">
+            <li class="exercise-item">
+                Agachamento Livre
+                <a href="https://www.youtube.com/watch?v=86ZW7tmmLuU" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Agachamento Hack
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Leg Press
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Cadeira Extensora
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Elevação de Quadril na Bola Suíça
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Agachamento com Kettlebell
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Agachamento com Bola
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Stiff com Kettlebell
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+            <li class="exercise-item">
+                Flexora com Corda
+                <a href="https://www.youtube.com/watch?v=video_id" target="_blank">Assistir no YouTube</a>
+            </li>
+        </ul>
+
+        <a href="{{ url_for('welcome') }}" class="back-link">Voltar para a Página Inicial</a>
+    </div>
+</body>
+</html>
